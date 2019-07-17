@@ -1,1 +1,1 @@
-# GIPHY-API-
+# GIPHY-API
