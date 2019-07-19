@@ -2,7 +2,7 @@ var topics = ["Breaking Bad", "The Office", "The Sopranos", "Game Of Thrones",
     "The Shield", "The Simpsons", "Lost", "Seinfeld", "Friends", "House Of Cards",
     "Prison Break", "Money Heist"];
 
-function showGiphy(){
+function showGiphy() {
     var serieName = $(this).attr("data-name");
     console.log(serieName);
 }
@@ -24,15 +24,27 @@ function showButtons() {
 $("#serie-btn").on("click", function () {
     var textInBox = $("#text-input").val().trim();
     //console.log(textInBox);
-    
+    var tempArr = [];
+    for (var j = 0; j < topics.length; j++) {
+        tempArr[j] = topics[j].toLowerCase();
+    }
+    var textInBoxTemp = $("#text-input").val().trim().toLowerCase();
+    console.log(tempArr);
+    console.log(textInBoxTemp);
+    var pos = tempArr.indexOf(textInBoxTemp);
     event.preventDefault();
-    if($("#text-input").val() != ""){
-        console.log(topics.indexOf(textInBox));
+    if ($("#text-input").val() != "" && pos < 0) {
+        
         topics.push(textInBox)
         $("#text-input").val("");
-    
+
         showButtons();
+    }else{
+        alert("You must enter a valid Serie and no repeat the serie")
+        $("#text-input").val("");
     }
+
+    console.log(pos);
 
 
 })
